@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Blitz - Random Quote Generator</title>
+    <meta name="description" content="Get inspired with our Random Quote Generator! Refresh for motivational quotes from Quaid-e-Azam, Allama Iqbal, and other great personalities.">
+    <meta name="keywords" content="quotes, random quote generator, motivational quotes, inspirational quotes, Quaid-e-Azam quotes, Allama Iqbal quotes, success quotes">
+    <meta name="author" content="Farhan Sajid">
+    <meta name="robots" content="index, follow">
+    <link rel="shortcut icon" href="quote.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            height: auto;
+            min-height: 60vh;
+            background-color: burlywood;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    
+        .refresh {
+            width: 70px;
+            height: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: aqua;
+            color: black;
+            border-radius: 7px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+    
+        .refresh p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            align-self: center;
+            color: black;
+            font-weight: 500;
+            font-family: "Baloo Bhai 2", sans-serif;
+        }
+    
+        .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 1000;
+            padding: 20px;
+            font-style: italic;
+        }
+    
+        .subscribe {
+            padding: 15px 25px;
+            background-color: red;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: Poppins, sans-serif;
+            margin: 7px 7px;
+            margin-bottom: 7px;
+        }
+    
+        .sub_txt {
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0 20px;
+        }
+    
+        @media (max-width: 768px) {
+            .text {
+                font-size: 1.5rem;
+            }
+    
+            .subscribe {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+    
+            .sub_txt {
+                font-size: 0.9rem;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .text {
+                font-size: 1.2rem;
+            }
+    
+            .subscribe {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+    
+            .sub_txt {
+                font-size: 0.8rem;
+            }
+        }
+
+        .refresh-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+
+        .refresh-btn:hover {
+            background: #2980b9;
+        }
+        #quote-text{
+            font-family: "Baloo Bhai 2", sans-serif;
+            font-weight: bold;
+            /* font-style: italic; */
+        }
+        #site-name{
+            font-weight: 700;
+            font-size: 3.5rem;
+            font-family: "Poppins", sans-serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="site-name">Quote Blitz</h1>
+    <div class="container">
+        <p class="text"></p>
+    </div>
+    <p id="quote-text">Click refresh to get a quote!</p>
+    <button class="refresh-btn" onclick="generateQuote()">🔄 Refresh Quote</button>
+    <p class="sub_txt">Subscribe to CodeWithFarhan to learn coding and make websites like this</p>
+    <a href="https://www.youtube.com/@Code_With_Farhan?sub_confirmation=1" target="_blank" class="subscribe">Subscribe to CodeWithFarhan</a>
+
+    <script>
+        const quotes = [
+    // Quaid-e-Azam Muhammad Ali Jinnah Quotes
+    "With faith, discipline, and selfless devotion to duty, there is nothing worthwhile that you cannot achieve. – Muhammad Ali Jinnah",
+    "I do not believe in taking the right decision, I take a decision and make it right. – Muhammad Ali Jinnah",
+    "Expect the best, prepare for the worst. – Muhammad Ali Jinnah",
+    "No nation can rise to the height of glory unless your women are side by side with you. – Muhammad Ali Jinnah",
+    "Think a hundred times before you take a decision, but once that decision is taken, stand by it as one man. – Muhammad Ali Jinnah",
+    "Work honestly and sincerely and be faithful and loyal to the Pakistan Government. – Muhammad Ali Jinnah",
+    "Failure is a word unknown to me. – Muhammad Ali Jinnah",
+    "My message to you all is of hope, courage, and confidence. – Muhammad Ali Jinnah",
+    "We are now all Pakistanis—not Baluchis, Pathans, Sindhis, Bengalis, Punjabis, and so on—and as Pakistanis, we must feel, behave, and act, and we should be proud to be known as Pakistanis and nothing else. – Muhammad Ali Jinnah",
+    "You are free; you are free to go to your temples, you are free to go to your mosques or to any other place of worship in this State of Pakistan. You may belong to any religion, caste, or creed—that has nothing to do with the business of the state. – Muhammad Ali Jinnah",
+
+    // Allama Iqbal Quotes
+    "Khudi ko kar buland itna, ke har taqdeer se pehle, Khuda bande se khud poochay, bata teri raza kya hai? – Allama Iqbal",
+    "Tundi-e-baad-e-mukhalif se na ghabra aye Uqaab, Ye to chalti hai tujhe ooncha urane ke liye. – Allama Iqbal",
+    "Zindagi sirf jism ka naam nahi hai, balke rooh ka bhi hai. – Allama Iqbal",
+    "Iqbal bada updeshak hai, man baton mein moh leta hai, guftaar ka ye ghazi to bana, kirdar ka ghazi ban na saka. – Allama Iqbal",
+    "Sitaron se aage jahan aur bhi hain, Abhi ishq ke imtihan aur bhi hain. – Allama Iqbal",
+    "Insaan ki khud ki talash hi insaan ki sabse badi talash hai. – Allama Iqbal",
+    "Parindon ki duniya ka darvesh hoon main, ke Shaheen banata nahi aashiyana. – Allama Iqbal",
+    "Mohabbat mujhe un jawanon se hai, sitaron pe jo dalte hain kamand. – Allama Iqbal",
+    "Apne mann mein doob kar pa ja suragh-e-zindagi, tu agar mera nahi banta na ban, apna to ban. – Allama Iqbal",
+    "Guzar ja aqal se aage ke yeh noor, charagh-e-raah hai manzil nahi hai. – Allama Iqbal",
+
+    // General Motivational Quotes
+    "The best way to predict the future is to create it. – Peter Drucker",
+    "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill",
+    "Do what you can, with what you have, where you are. – Theodore Roosevelt",
+    "It always seems impossible until it’s done. – Nelson Mandela",
+    "Believe you can and you're halfway there. – Theodore Roosevelt",
+    "Your time is limited, so don’t waste it living someone else’s life. – Steve Jobs",
+    "Opportunities don’t happen. You create them. – Chris Grosser",
+    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+    "Dream big and dare to fail. – Norman Vaughan",
+    "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
+    "Success is getting what you want. Happiness is wanting what you get. – Dale Carnegie",
+    "Don’t let yesterday take up too much of today. – Will Rogers",
+    "Hardships often prepare ordinary people for an extraordinary destiny. – C.S. Lewis",
+    "If you want to achieve greatness stop asking for permission. – Anonymous",
+    "The only way to do great work is to love what you do. – Steve Jobs",
+    "It’s not whether you get knocked down, it’s whether you get up. – Vince Lombardi",
+    "Success is how high you bounce when you hit bottom. – George S. Patton",
+    "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart. – Roy T. Bennett",
+    "Difficulties in life are intended to make us better, not bitter. – Dan Reeves",
+    "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+    "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
+    "The man who has confidence in himself gains the confidence of others. – Hasidic Proverb",
+    "You don’t have to be great to start, but you have to start to be great. – Zig Ziglar",
+    "Push yourself, because no one else is going to do it for you. – Anonymous",
+    "Great things never come from comfort zones. – Anonymous",
+    "The harder you work for something, the greater you’ll feel when you achieve it. – Anonymous",
+    "Don’t stop when you’re tired. Stop when you’re done. – Anonymous",
+    "Do something today that your future self will thank you for. – Anonymous",
+    "Little things make big days. – Anonymous",
+    "It’s going to be hard, but hard does not mean impossible. – Anonymous",
+    "Don’t wait for opportunity. Create it. – Anonymous",
+    "Sometimes we’re tested not to show our weaknesses, but to discover our strengths. – Anonymous",
+    "The key to success is to focus on goals, not obstacles. – Anonymous",
+    "Dream it. Wish it. Do it. – Anonymous",
+    "Success doesn’t just find you. You have to go out and get it. – Anonymous",
+    "The only way to achieve the impossible is to believe it is possible. – Charles Kingsleigh",
+    "The secret of getting ahead is getting started. – Mark Twain",
+    "The best revenge is massive success. – Frank Sinatra",
+    "If you’re going through hell, keep going. – Winston Churchill",
+    "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
+    "I find that the harder I work, the more luck I seem to have. – Thomas Jefferson",
+       // Additional Quaid-e-Azam Muhammad Ali Jinnah Quotes
+       "Pakistan not only means freedom and independence but the Muslim Ideology which has to be preserved, which has come to us as a precious gift and treasure and which, we hope, others will share with us. – Muhammad Ali Jinnah",
+    "There is no power on earth that can undo Pakistan. – Muhammad Ali Jinnah",
+    "You have to stand guard over the development and maintenance of Islamic democracy, Islamic social justice, and the equality of manhood in your own native soil. – Muhammad Ali Jinnah",
+    "Democracy is in the blood of the Muslims, who look upon complete equality of mankind. – Muhammad Ali Jinnah",
+    "We must work our destiny in our own way and present to the world an economic system based on true Islamic concept of equality of manhood and social justice. – Muhammad Ali Jinnah",
+    "I have always maintained that no nation can ever be worthy of its existence that cannot take its women along with the men. – Muhammad Ali Jinnah",
+    "The weak and the defenseless in this world invite aggression from others. – Muhammad Ali Jinnah",
+    "Come forward as servants of Islam, organize the people economically, socially, educationally, and politically, and I am sure that you will be a power that will be accepted by everybody. – Muhammad Ali Jinnah",
+    "You have to stand guard over the development and maintenance of Islamic democracy, Islamic social justice, and the equality of manhood in your own native soil. – Muhammad Ali Jinnah",
+    "The story of Pakistan, its struggle, and its achievement, is the very story of great human ideals, struggling to survive in the face of great odds and difficulties. – Muhammad Ali Jinnah",
+
+    // Additional Allama Iqbal Quotes
+    "The ultimate aim of the ego is not to see something, but to be something. – Allama Iqbal",
+    "The only way to reform the world is to reform oneself. – Allama Iqbal",
+    "The higher your ideal, the lower your fall. – Allama Iqbal",
+    "The life of the individual as well as of the nation has a purpose. – Allama Iqbal",
+    "The universe is not a prison-house but a kindergarten of souls. – Allama Iqbal",
+    "The real worth of a nation lies in its capacity to produce great men. – Allama Iqbal",
+    "The ultimate aim of life is self-realization. – Allama Iqbal",
+    "The essence of life is struggle. – Allama Iqbal",
+    "The self is the only reality in the universe. – Allama Iqbal",
+    "The true Muslim is one who is not afraid of anyone but God. – Allama Iqbal",
+
+    // Additional General Motivational Quotes
+    "The only place where success comes before work is in the dictionary. – Vidal Sassoon",
+    "The best revenge is massive success. – Frank Sinatra",
+    "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+    "The only person you are destined to become is the person you decide to be. – Ralph Waldo Emerson",
+    "The best time to plant a tree was 20 years ago. The second best time is now. – Chinese Proverb",
+    "The only thing standing between you and your goal is the story you keep telling yourself as to why you can't achieve it. – Jordan Belfort",
+    "The only way to do great work is to love what you do. – Steve Jobs",
+    "The only thing worse than starting something and failing is not starting something. – Seth Godin",
+    "The only thing that overcomes hard luck is hard work. – Harry Golden",
+    "The only thing that stands between a man and what he wants from life is often merely the will to try it and the faith to believe that it is possible. – Richard M. DeVos",
+    "The only way to achieve the impossible is to believe it is possible. – Charles Kingsleigh",
+    "The only thing that you absolutely have to know is the location of the library. – Albert Einstein",
+    "The only true wisdom is in knowing you know nothing. – Socrates",
+    "The only thing necessary for the triumph of evil is for good men to do nothing. – Edmund Burke",
+    "The only thing we have to fear is fear itself. – Franklin D. Roosevelt",
+    "The only thing that interferes with my learning is my education. – Albert Einstein",
+    "The only thing worse than being blind is having sight but no vision. – Helen Keller",
+    "The only thing that is constant is change. – Heraclitus",
+    "The only thing we can do is play on the one string we have, and that is our attitude. – Charles R. Swindoll",
+    "The only thing standing between you and your dream is the will to try and the belief that it is actually possible. – Joel Brown",
+    "The only thing that can stop you is you. – Anonymous",
+    "The only thing that can grow is the thing you give energy to. – Ralph Waldo Emerson",
+    "The only thing that can save the world is the reclaiming of the awareness of the world. – Allen Ginsberg",
+    "The only thing that can bring peace is the transformation of the human heart. – Thich Nhat Hanh",
+    "The only thing that can defeat us is our own fear. – Anonymous",
+    "The only thing that can make you happy is you. – Anonymous",
+    "The only thing that can make you successful is you. – Anonymous",
+    "The only thing that can make you great is you. – Anonymous",
+    "The only thing that can make you better is you. – Anonymous",
+    "The only thing that can make you stronger is you. – Anonymous",
+    "The only thing that can make you wiser is you. – Anonymous",
+    "The only thing that can make you kinder is you. – Anonymous",
+    "The only thing that can make you braver is you. – Anonymous"]
+
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.querySelector(".text").textContent = quotes[randomIndex];
+        }
+
+        generateQuote();
+    </script>
+</body>
+
+</html>
